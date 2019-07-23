@@ -1,5 +1,9 @@
 require("./config/config")
 const express = require('express')
+    // Using Node.js `require()`
+const mongoose = require('mongoose');
+
+
 const app = express()
 const bodyParser = require('body-parser')
 
@@ -55,6 +59,9 @@ app.put('/usuario/:id', function(req, res) {
 app.delete('/usuario', function(req, res) {
     res.json('get Usuario')
 })
+
+mongoose.connect('mongodb://localhost:27017/cafe', { useNewUrlParser: true });
+
 
 app.listen(process.env.PORT, () => {
     console.log(`Escuchando peticiones en el puerto ${process.env.PORT}`)
